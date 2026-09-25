@@ -1,0 +1,240 @@
+{
+  "site": {
+    "title": "Gift Udoh",
+    "wordmark": "G. E. Udoh",
+    "description": "PhD researcher at Heriot-Watt University \u2014 digital twins for decarbonising industry with hydrogen and low-carbon energy vectors.",
+    "last_revised": "September 2026",
+    "footer": "\u00a9 2026 Gift Eno Udoh"
+  },
+  "hero": {
+    "kicker": [
+      "Sustainability & energy engineer",
+      "PhD researcher, Heriot-Watt University",
+      "Edinburgh, UK"
+    ],
+    "headline": "Digital twins for *industrial decarbonisation*.",
+    "name": "Gift Eno Udoh",
+    "photo": "/images/profile.jpg",
+    "affiliations": [
+      "PhD, Green Industrial Futures \u2014 Heriot-Watt University",
+      "MSc, Global Sustainability Engineering (Distinction-track)"
+    ],
+    "email": "givt.udoh@gmail.com",
+    "abstract": "I am a multidisciplinary engineer working at the intersection of **energy systems, sustainability and process engineering**. My PhD builds **digital twins** to help decarbonise industry using **hydrogen and low-carbon energy vectors**, quantifying how distributed generation and storage change the cost, carbon and operational profile of a site. My MSc modelled **energy storage for large-scale solar farms**, and my earlier work spans food and process engineering. I care about reproducible modelling: every figure I publish should trace to a committed dataset and a re-runnable model.",
+    "keywords": [
+      "digital twins",
+      "hydrogen",
+      "industrial decarbonisation",
+      "energy storage",
+      "PyPSA",
+      "net zero"
+    ],
+    "reader": {
+      "show": true,
+      "intro": "Choose who you are and I'll point you to what matters most. Or just scroll \u2014 it reads like a short paper.",
+      "paths": [
+        {
+          "label": "Researcher",
+          "sections": [
+            "research",
+            "publications",
+            "contact"
+          ],
+          "note": "Start with [Research](#research), then [Publications](#publications). For collaboration, [write to me](mailto:givt.udoh@gmail.com)."
+        },
+        {
+          "label": "Supervisor or funder",
+          "sections": [
+            "research",
+            "path",
+            "recognition"
+          ],
+          "note": "See [Research](#research), my [Path](#path), and [Recognition](#recognition)."
+        },
+        {
+          "label": "Industry / practitioner",
+          "sections": [
+            "research",
+            "skills",
+            "contact"
+          ],
+          "note": "[Research](#research) covers the digital-twin work and its practical findings; [Skills](#skills) lists the tools."
+        }
+      ]
+    },
+    "figure": {
+      "show": true,
+      "caption": "**Fig. 1** Solar generation (gold) rarely lines up with demand (green). Storage shifts the midday surplus into the evening peak. Move your cursor across the day to see the mismatch."
+    }
+  },
+  "sections": [
+    {
+      "id": "research",
+      "kind": "feature",
+      "number": "1",
+      "title": "Research",
+      "lead": "Digital twins for decarbonising industry with hydrogen and low-carbon energy vectors.",
+      "body": "My PhD (Green Industrial Futures, Heriot-Watt) develops digital twins to help decarbonise industry with hydrogen and low-carbon energy vectors \u2014 coupling data, physics-based component models and optimisation to compare supply and storage options over realistic operating years. My published work includes induction-heated catalyst systems for converting intermittent renewable power into hydrogen and hydrocarbons (Faraday Discussions, 2026). Alongside this I use PyPSA to model distributed storage (battery, hydrogen, thermal) and PV self-consumption in commercial settings, quantifying the cost, carbon and peak-demand trade-offs of each configuration.",
+      "keywords": [
+        "digital twin",
+        "energy systems modelling",
+        "hydrogen",
+        "power-to-X"
+      ]
+    },
+    {
+      "id": "publications",
+      "kind": "list",
+      "number": "2",
+      "title": "Publications",
+      "lead": "Peer-reviewed and in preparation.",
+      "items": [
+        {
+          "title": "Induction-heated catalyst systems for intermittent power to hydrocarbons and hydrogen",
+          "meta": "J. Andresen, M. Ojeda, G. Udoh \u2014 Faraday Discussions, 2026",
+          "note": "Power-to-X catalysis for intermittent renewable electricity."
+        },
+        {
+          "title": "Digital-twin modelling of distributed energy storage in commercial sites (working title)",
+          "meta": "Manuscript in preparation, 2026",
+          "note": "PyPSA-based comparison of PV, battery, hydrogen and thermal storage over a full year of dispatch."
+        },
+        {
+          "title": "Energy storage in UK business parks: a systematic review (working title)",
+          "meta": "Review in preparation, 2026",
+          "note": "Literature streams, market/regulatory access, and the objective-function trap."
+        },
+        {
+          "title": "MSc dissertation \u2014 Advanced energy storage for large-scale solar farms (Edinburgh Airport case study)",
+          "meta": "Heriot-Watt University, 2024",
+          "note": "Optimising storage for large-scale solar, with Edinburgh Airport as the case study."
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "kind": "columns",
+      "number": "3",
+      "title": "Skills & Tools",
+      "columns": [
+        {
+          "heading": "Modelling",
+          "items": [
+            "PyPSA / energy-system optimisation",
+            "Digital twins",
+            "Techno-economic analysis",
+            "Data analysis"
+          ]
+        },
+        {
+          "heading": "Engineering",
+          "items": [
+            "Process engineering & optimisation",
+            "Environmental impact assessment",
+            "Safety & risk assessment",
+            "Project management"
+          ]
+        },
+        {
+          "heading": "Domains",
+          "items": [
+            "Hydrogen & low-carbon vectors",
+            "Energy storage & PV",
+            "Industrial decarbonisation",
+            "Sustainability"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "path",
+      "kind": "timeline",
+      "number": "4",
+      "title": "Path",
+      "items": [
+        {
+          "when": "Mar 2025 \u2013 present",
+          "what": "PhD, Green Industrial Futures \u2014 Heriot-Watt University",
+          "note": "Digital twins for decarbonising industry using hydrogen and low-carbon energy vectors."
+        },
+        {
+          "when": "2023 \u2013 2024",
+          "what": "MSc, Global Sustainability Engineering \u2014 Heriot-Watt University",
+          "note": "Dissertation: energy storage for large-scale solar farms (Edinburgh Airport case study). PTDF scholarship (top 5%)."
+        },
+        {
+          "when": "2012 \u2013 2018",
+          "what": "BEng, Food Engineering \u2014 University of Uyo, Nigeria",
+          "note": "All-time best female graduating student, Food & Agricultural Engineering. Final project: dual-feed sweet-potato slicer."
+        },
+        {
+          "when": "2020 \u2013 2023",
+          "what": "Engineering & management roles \u2014 Nigeria",
+          "note": "Facility Manager, Production Manager and Social Media Manager across food/process businesses."
+        }
+      ]
+    },
+    {
+      "id": "recognition",
+      "kind": "list",
+      "number": "5",
+      "title": "Recognition",
+      "items": [
+        {
+          "title": "Winner \u2014 Hydrogen Scotland 2024 Student Poster Competition",
+          "meta": "2024",
+          "note": ""
+        },
+        {
+          "title": "PTDF Postgraduate Scholarship (top 5%)",
+          "meta": "2022",
+          "note": "Petroleum Technology Development Fund, UK study award."
+        },
+        {
+          "title": "All-time Best Female Graduating Student \u2014 Food & Agricultural Engineering, University of Uyo",
+          "meta": "2018",
+          "note": ""
+        },
+        {
+          "title": "Mma Obot Foundation Scholarship",
+          "meta": "2015",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "contact",
+      "kind": "links",
+      "number": "6",
+      "title": "Contact",
+      "lead": "Open to research collaboration and industry projects.",
+      "items": [
+        {
+          "label": "Email",
+          "value": "givt.udoh@gmail.com",
+          "href": "mailto:givt.udoh@gmail.com"
+        },
+        {
+          "label": "LinkedIn",
+          "value": "in/gift-udoh",
+          "href": "https://www.linkedin.com/in/gift-udoh/"
+        },
+        {
+          "label": "Google Scholar",
+          "value": "Profile",
+          "href": "https://scholar.google.com/citations?user=l8MbRhUAAAAJ&hl=en"
+        },
+        {
+          "label": "GitHub",
+          "value": "Gee-H2",
+          "href": "https://github.com/Gee-H2"
+        },
+        {
+          "label": "University",
+          "value": "geu2000@hw.ac.uk",
+          "href": "mailto:geu2000@hw.ac.uk"
+        }
+      ]
+    }
+  ]
+}
