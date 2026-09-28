@@ -117,6 +117,20 @@ footer{border-top:1px solid var(--rule);padding-block:30px;color:var(--muted);fo
 .noscript{padding:14px;border:1px dashed var(--rule);border-radius:10px;margin:20px 0;color:var(--muted)}
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:20px;font-size:13px;opacity:0;transition:opacity .3s;z-index:50}
 .toast.show{opacity:1}
+/* ---- mobile hardening ---- */
+html,body{overflow-x:hidden;max-width:100%}
+.wrap{width:100%}
+.sim,.gridcard,.abstract,.sec .content{min-width:0}
+@media(max-width:560px){
+  .hero h1{font-size:clamp(32px,10vw,44px);word-break:break-word}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .kpi .v{white-space:normal;font-size:17px}
+  .kpi .l{font-size:9px}
+  .toggles{gap:10px}
+  .tg{flex-wrap:wrap}
+  .kicker{font-size:11px}
+}
+@media(max-width:400px){.hero h1{font-size:32px}}
 
 .gridcard{margin:22px 0 4px;background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:14px 18px;display:grid;grid-template-columns:130px 1fr;gap:18px;align-items:center;max-width:560px}
 @media(max-width:560px){.gridcard{grid-template-columns:1fr;text-align:center}}
