@@ -168,7 +168,7 @@ let DATA, baseOrder=[];
 function render(d){
   DATA=d;
   document.getElementById("wordmark").textContent=d.site.wordmark||d.site.title;
-  document.getElementById("footer").textContent=d.site.footer||("© "+d.site.title);
+  document.getElementById("footer").innerHTML=esc(d.site.footer||("© "+d.site.title))+' · <a href="https://github.com/Gee-H2/Gee-H2.github.io/edit/main/content.json" style="color:var(--muted);text-decoration-color:var(--rule)">edit</a>';
   document.title=d.site.title;
   const h=d.hero;
   document.getElementById("nav").innerHTML=(d.sections||[]).map(s=>`<a href="#${s.id}"><b>${s.number||""}</b>${esc(s.title)}</a>`).join("");
