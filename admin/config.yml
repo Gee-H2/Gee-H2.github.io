@@ -55,7 +55,7 @@ collections:
                 required: false
                 field: { name: keyword, label: Keyword, widget: string }
               - name: reader
-                label: "Reading as" wayfinding
+                label: "Reading-as wayfinding"
                 widget: object
                 collapsed: true
                 fields:
@@ -161,4 +161,4 @@ collections:
                     fields:
                       - { name: label, label: "Label (Email/GitHub/LinkedIn/Google Scholar/ORCID/University)", widget: string }
                       - { name: value, label: Shown value, widget: string }
-                      - { name: href, label: URL (mailto: or https:), widget: string }
+                      - { name: href, label: "URL (mailto: or https:)", widget: string }
