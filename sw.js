@@ -1,5 +1,5 @@
 /* Simple cache-first service worker. Bump CACHE to force refresh after edits. */
-const CACHE = "gu-site-v3";
+const CACHE = "gu-site-v4";
 const ASSETS = ["./", "./index.html", "./content.json", "./sim.js", "./grid.js", "./images/profile.jpg"];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));
