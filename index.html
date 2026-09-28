@@ -116,6 +116,7 @@ footer{border-top:1px solid var(--rule);padding-block:30px;color:var(--muted);fo
 .gridcard canvas{width:150px;height:90px;display:block;margin-inline:auto}
 .gridcard .t{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--accent);text-transform:uppercase}
 .gridcard .s{margin-top:6px;color:var(--muted);font-size:14px;line-height:1.5}
+.technote{margin-top:10px;color:var(--muted);font-size:12.5px;line-height:1.5;background:var(--paper-2);border:1px solid var(--rule);border-radius:8px;padding:8px 10px}
 </style>
 </head>
 <body>
@@ -190,8 +191,9 @@ function render(d){
             <button class="chip" data-season="winter">Winter</button>
           </div>
         </div>
-        <div class="ctl"><label>Battery size <span id="capLbl"></span></label>
+        <div class="ctl"><label><span id="sizeName">Battery size</span> <span id="capLbl"></span></label>
           <input type="range" id="capSlider" min="0" max="3000" step="100" value="1200"></div>
+        <div class="technote" id="techNote"></div>
         <div class="ctl mini">
           <label>Grid price <span id="enLbl"></span></label>
           <input type="range" id="enSlider" min="120" max="420" step="10" value="280">
@@ -235,9 +237,9 @@ function readerBlock(r){return `<div class="reader"><span class="lbl mono">Readi
   <div class="note" id="readerNote"></div></div>`;}
 function wireReader(){
   const paths=(DATA.hero.reader||{}).paths||[];
-  document.querySelectorAll(".chip").forEach(btn=>btn.addEventListener("click",()=>{
+  document.querySelectorAll(".reader .chip").forEach(btn=>btn.addEventListener("click",()=>{
     const on=btn.classList.contains("on");
-    document.querySelectorAll(".chip").forEach(b=>b.classList.remove("on"));
+    document.querySelectorAll(".reader .chip").forEach(b=>b.classList.remove("on"));
     const note=document.getElementById("readerNote");
     if(on){note.innerHTML="";reorder(baseOrder,[]);return;}
     btn.classList.add("on");
@@ -280,7 +282,8 @@ function startSim(h){
   const out={
     solar:document.getElementById("kSolar"),peak:document.getElementById("kPeak"),co2:document.getElementById("kCo2"),
     save:document.getElementById("kSave"),payback:document.getElementById("kPay"),
-    capval:document.getElementById("capval"),capLbl:document.getElementById("capLbl")
+    capval:document.getElementById("capval"),capLbl:document.getElementById("capLbl"),
+    sizeName:document.getElementById("sizeName"),techNote:document.getElementById("techNote")
   };
   // live labels for the tariff sliders
   const en=document.getElementById("enSlider"),ex=document.getElementById("exSlider"),cch=document.getElementById("capchSlider");

@@ -103,7 +103,15 @@
       out.save.textContent = e.saveYr >= 1000 ? "£" + (e.saveYr / 1000).toFixed(1) + "k/yr" : "£" + Math.round(e.saveYr) + "/yr";
       out.payback.textContent = isFinite(e.payback) ? e.payback.toFixed(1) + " yr" : "—";
       out.capval.textContent = cap + " kWh · " + Math.round(powerKW) + " kW";
+      // technology-aware size label + note
+      const t = TECH[state.tech];
+      const sizeName = state.tech === "battery" ? "Battery size" : state.tech === "hydrogen" ? "Hydrogen store" : "Thermal store";
+      if (out.sizeName) out.sizeName.textContent = sizeName;
       out.capLbl.textContent = "(" + cap + " kWh)";
+      if (out.techNote) {
+        const rt = Math.round(t.etaS * t.etaD * 100);
+        out.techNote.innerHTML = `<b>${t.name}</b> — round-trip efficiency ≈ ${rt}%, ~£${t.capex}/kWh capex, power ≈ store/${t.cRate}h.`;
+      }
     }
 
     // wire controls
