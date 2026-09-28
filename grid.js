@@ -18,18 +18,18 @@
     const dpr = Math.min(2, window.devicePixelRatio || 1);
     const r = canvas.getBoundingClientRect();
     canvas.width = r.width * dpr; canvas.height = r.height * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const W = r.width, H = r.height, cx = W / 2, cy = H * 0.92, rad = Math.min(W / 2, H) * 0.82;
+    const W = r.width, H = r.height, cx = W / 2, cy = H * 0.80, rad = Math.min(W / 2 - 8, H * 0.62);
     const b = band(value), frac = Math.min(1, value / 400);
     // track
-    ctx.lineWidth = 12; ctx.lineCap = "round";
+    ctx.lineWidth = 10; ctx.lineCap = "round";
     ctx.beginPath(); ctx.arc(cx, cy, rad, Math.PI, 2 * Math.PI); ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue("--rule").trim() || "#ccc"; ctx.stroke();
     // value arc
     ctx.beginPath(); ctx.arc(cx, cy, rad, Math.PI, Math.PI + frac * Math.PI); ctx.strokeStyle = b.col; ctx.stroke();
     // text
     ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue("--ink").trim() || "#000";
-    ctx.textAlign = "center"; ctx.font = "600 30px 'Newsreader',serif";
-    ctx.fillText(Math.round(value), cx, cy - 6);
-    ctx.font = "11px 'IBM Plex Mono',monospace"; ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue("--muted").trim() || "#666";
+    ctx.textAlign = "center"; ctx.font = "600 26px 'Newsreader',serif";
+    ctx.fillText(Math.round(value), cx, cy - 4);
+    ctx.font = "10px 'IBM Plex Mono',monospace"; ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue("--muted").trim() || "#666";
     ctx.fillText("gCO₂/kWh", cx, cy + 12);
   }
 
