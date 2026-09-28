@@ -1,0 +1,164 @@
+backend:
+  name: github
+  repo: Gee-H2/Gee-H2.github.io
+  branch: main
+  commit_messages:
+    update: "Update {{slug}} via /admin editor"
+
+media_folder: images
+public_folder: /images
+
+collections:
+  - name: website
+    label: Website
+    editor:
+      preview: false
+    files:
+      - name: content
+        label: Website content
+        file: content.json
+        fields:
+          - name: site
+            label: Site settings
+            widget: object
+            collapsed: true
+            fields:
+              - { name: title, label: Site name (browser tab), widget: string }
+              - { name: wordmark, label: Short name in top bar, widget: string }
+              - { name: description, label: One-line description (SEO), widget: text }
+              - { name: last_revised, label: Last revised, widget: string, required: false }
+              - { name: footer, label: Footer text, widget: string, required: false }
+
+          - name: hero
+            label: Top of page
+            widget: object
+            collapsed: true
+            fields:
+              - name: kicker
+                label: Small labels above headline
+                widget: list
+                required: false
+                field: { name: label, label: Label, widget: string }
+              - { name: headline, label: Headline, widget: string, hint: "Wrap a word in *asterisks* to colour it green." }
+              - { name: name, label: Your name, widget: string }
+              - { name: photo, label: Portrait photo, widget: image, required: false }
+              - name: affiliations
+                label: Affiliations
+                widget: list
+                required: false
+                field: { name: affiliation, label: Affiliation, widget: string }
+              - { name: email, label: Contact email, widget: string }
+              - { name: abstract, label: Abstract paragraph, widget: text, hint: "**bold**, *italic*, [link](url) supported." }
+              - name: keywords
+                label: Keywords
+                widget: list
+                required: false
+                field: { name: keyword, label: Keyword, widget: string }
+              - name: reader
+                label: "Reading as" wayfinding
+                widget: object
+                collapsed: true
+                fields:
+                  - { name: show, label: Show this block, widget: boolean, default: true }
+                  - { name: intro, label: Intro text, widget: text }
+                  - name: paths
+                    label: Audience paths
+                    widget: list
+                    fields:
+                      - { name: label, label: Audience label, widget: string }
+                      - name: sections
+                        label: Section IDs to spotlight
+                        widget: list
+                        field: { name: id, label: Section id, widget: string }
+                      - { name: note, label: Note (markdown ok), widget: text }
+              - name: figure
+                label: Live figure
+                widget: object
+                collapsed: true
+                fields:
+                  - { name: show, label: Show the figure, widget: boolean, default: true }
+                  - { name: caption, label: Caption, widget: text }
+
+          - name: sections
+            label: Sections
+            widget: list
+            types:
+              - name: feature
+                label: "Research feature"
+                widget: object
+                fields:
+                  - { name: id, label: Link ID, widget: string }
+                  - { name: kind, label: kind, widget: hidden, default: feature }
+                  - { name: number, label: Section number, widget: string }
+                  - { name: title, label: Title, widget: string }
+                  - { name: lead, label: Lead line, widget: string, required: false }
+                  - { name: body, label: Body, widget: text, required: false }
+                  - name: keywords
+                    label: Keywords
+                    widget: list
+                    required: false
+                    field: { name: keyword, label: Keyword, widget: string }
+              - name: list
+                label: "List / publications / recognition"
+                widget: object
+                fields:
+                  - { name: id, label: Link ID, widget: string }
+                  - { name: kind, label: kind, widget: hidden, default: list }
+                  - { name: number, label: Section number, widget: string }
+                  - { name: title, label: Title, widget: string }
+                  - { name: lead, label: Lead line, widget: string, required: false }
+                  - name: items
+                    label: Items
+                    widget: list
+                    fields:
+                      - { name: title, label: Title, widget: string }
+                      - { name: meta, label: Meta line, widget: string, required: false }
+                      - { name: note, label: Note, widget: text, required: false }
+              - name: columns
+                label: "Columns (skills)"
+                widget: object
+                fields:
+                  - { name: id, label: Link ID, widget: string }
+                  - { name: kind, label: kind, widget: hidden, default: columns }
+                  - { name: number, label: Section number, widget: string }
+                  - { name: title, label: Title, widget: string }
+                  - name: columns
+                    label: Columns
+                    widget: list
+                    fields:
+                      - { name: heading, label: Heading, widget: string }
+                      - name: items
+                        label: Items
+                        widget: list
+                        field: { name: item, label: Item, widget: string }
+              - name: timeline
+                label: "Timeline (path)"
+                widget: object
+                fields:
+                  - { name: id, label: Link ID, widget: string }
+                  - { name: kind, label: kind, widget: hidden, default: timeline }
+                  - { name: number, label: Section number, widget: string }
+                  - { name: title, label: Title, widget: string }
+                  - name: items
+                    label: Entries
+                    widget: list
+                    fields:
+                      - { name: when, label: When, widget: string }
+                      - { name: what, label: What, widget: string }
+                      - { name: note, label: Note, widget: text, required: false }
+              - name: links
+                label: "Links (contact icons)"
+                widget: object
+                fields:
+                  - { name: id, label: Link ID, widget: string }
+                  - { name: kind, label: kind, widget: hidden, default: links }
+                  - { name: number, label: Section number, widget: string }
+                  - { name: title, label: Title, widget: string }
+                  - { name: lead, label: Lead line, widget: string, required: false }
+                  - name: items
+                    label: Links
+                    widget: list
+                    fields:
+                      - { name: label, label: "Label (Email/GitHub/LinkedIn/Google Scholar/ORCID/University)", widget: string }
+                      - { name: value, label: Shown value, widget: string }
+                      - { name: href, label: URL (mailto: or https:), widget: string }
