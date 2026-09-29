@@ -183,6 +183,7 @@ html,body{overflow-x:hidden;max-width:100%}
 <script src="grid.js"></script>
 <script>
 const esc=s=>String(s==null?"":s);
+const pad2=n=>String(n).padStart(2,"0");
 function md(t){return esc(t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
   .replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>").replace(/\*(.+?)\*/g,'<em>$1</em>')
   .replace(/\[(.+?)\]\((.+?)\)/g,'<a href="$2">$1</a>');}
@@ -207,7 +208,7 @@ function render(d){
   document.getElementById("footer").innerHTML=esc(d.site.footer||("© "+d.site.title))+' · <a href="https://github.com/Gee-H2/Gee-H2.github.io/edit/main/content.json" style="color:var(--muted);text-decoration-color:var(--rule)">edit</a>';
   document.title=d.site.title;
   const h=d.hero;
-  document.getElementById("nav").innerHTML=(d.sections||[]).map(s=>`<a href="#${s.id}"><b>${s.number||""}</b>${esc(s.title)}</a>`).join("");
+  document.getElementById("nav").innerHTML=(d.sections||[]).map(s=>`<a href="#${s.id}"><b>${s.number?pad2(s.number):""}</b>${esc(s.title)}</a>`).join("");
   let html=`<section class="hero" id="top">
     <div>
       <div class="kicker mono">${(h.kicker||[]).map(k=>`<span>${esc(k)}</span>`).join("")}</div>
@@ -286,7 +287,7 @@ function renderSection(s){
       const ext=/^https?:/.test(it.href)?' target="_blank" rel="noopener"':'';
       return `<a class="iconlk" href="${esc(it.href)}"${ext}${copy} aria-label="${esc(it.label)} — ${esc(it.value)}" title="${esc(it.label)}: ${esc(it.value)}">${ic}<span class="tip">${esc(it.label)}</span></a>`;
     }).join("")}</div>`;
-  return `<section class="sec" id="${s.id}"><div class="head"><div class="num mono">§ ${esc(s.number)}</div><h2>${esc(s.title)}</h2></div><div class="content">${inner}</div></section>`;
+  return `<section class="sec" id="${s.id}"><div class="head"><div class="num mono">${pad2(s.number)}</div><h2>${esc(s.title)}</h2></div><div class="content">${inner}</div></section>`;
 }
 function readerBlock(r){return `<div class="reader"><span class="lbl mono">Reading as</span>
   <div class="note">${md(r.intro)}</div>
@@ -352,7 +353,7 @@ function startSim(h){
 // command palette
 function buildPalette(){
   const items=[];
-  (DATA.sections||[]).forEach(s=>items.push({label:"Go to "+s.title,hint:"§"+s.number,run:()=>location.hash="#"+s.id}));
+  (DATA.sections||[]).forEach(s=>items.push({label:"Go to "+s.title,hint:pad2(s.number),run:()=>location.hash="#"+s.id}));
   items.push({label:"Toggle light / dark theme",hint:"theme",run:()=>document.getElementById("theme").click()});
   (DATA.sections||[]).filter(s=>s.id==="contact").forEach(s=>(s.items||[]).forEach(l=>{
     items.push({label:l.label+" — "+l.value,hint:"open",run:()=>window.open(l.href,l.href.startsWith("mailto")?"_self":"_blank")});
