@@ -9,6 +9,7 @@
   "hero": {
     "kicker": [
       "Sustainability & energy engineer",
+      "Founder, DecarbTwin",
       "PhD researcher, Heriot-Watt University",
       "Edinburgh, UK"
     ],
@@ -20,14 +21,15 @@
       "MSc, Global Sustainability Engineering (Distinction-track)"
     ],
     "email": "givt.udoh@gmail.com",
-    "abstract": "I am a multidisciplinary engineer working at the intersection of **energy systems, sustainability and process engineering**. My PhD builds **digital twins** to help decarbonise industry using **hydrogen and low-carbon energy vectors**, quantifying how distributed generation and storage change the cost, carbon and operational profile of a site. My MSc modelled **energy storage for large-scale solar farms**, and my earlier work spans food and process engineering. I care about reproducible modelling: every figure I publish should trace to a committed dataset and a re-runnable model.",
+    "abstract": "I am a multidisciplinary engineer working at the intersection of **energy systems, sustainability and process engineering**. My PhD builds **digital twins** to help decarbonise industry using **hydrogen and low-carbon energy vectors**, quantifying how distributed generation and storage change the cost, carbon and operational profile of a site. My MSc modelled **energy storage for large-scale solar farms**, and my earlier work spans food and process engineering. I care about reproducible modelling: every figure I publish should trace to a committed dataset and a re-runnable model. I am also building **DecarbTwin**, a digital-twin platform that turns this research into a decarbonisation-planning tool for energy-intensive SMEs (Converge KickStart 2026, top 50).",
     "keywords": [
       "digital twins",
       "hydrogen",
       "industrial decarbonisation",
       "energy storage",
       "PyPSA",
-      "net zero"
+      "net zero",
+      "SME decarbonisation"
     ],
     "reader": {
       "show": true,
@@ -83,9 +85,23 @@
       ]
     },
     {
+      "id": "venture",
+      "kind": "feature",
+      "number": "2",
+      "title": "DecarbTwin",
+      "lead": "A digital-twin platform helping energy-intensive SMEs find their fastest, cheapest route to net zero.",
+      "body": "DecarbTwin lets a business input its operational data and compare decarbonisation pathways \u2014 hydrogen, electrification, renewables and energy storage \u2014 side by side, with **costs, carbon savings and matched incentives**. It targets a real and urgent market: Scotland has 1,295 food-and-drink manufacturers (96% of them SMEs) and 148 whisky distilleries consuming ~3.7 TWh a year, 72% still from fossil fuels \u2014 and from 2026 large buyers are mandating supply-chain emissions data. The platform is developed directly from my PhD digital-twin modelling at Heriot-Watt. **Shortlisted (top 50) in the Converge KickStart Challenge 2026.** *(Founder.)*",
+      "keywords": [
+        "digital twin",
+        "SME decarbonisation",
+        "net zero",
+        "Converge 2026"
+      ]
+    },
+    {
       "id": "publications",
       "kind": "list",
-      "number": "2",
+      "number": "3",
       "title": "Publications",
       "lead": "Peer-reviewed and in preparation.",
       "items": [
@@ -119,7 +135,7 @@
     {
       "id": "skills",
       "kind": "columns",
-      "number": "3",
+      "number": "4",
       "title": "Skills & Tools",
       "columns": [
         {
@@ -154,7 +170,7 @@
     {
       "id": "path",
       "kind": "timeline",
-      "number": "4",
+      "number": "5",
       "title": "Path",
       "items": [
         {
@@ -182,9 +198,14 @@
     {
       "id": "recognition",
       "kind": "list",
-      "number": "5",
+      "number": "6",
       "title": "Recognition",
       "items": [
+        {
+          "title": "Shortlisted (top 50) \u2014 Converge KickStart Challenge",
+          "meta": "2026",
+          "note": "For DecarbTwin, a digital-twin decarbonisation platform for energy-intensive SMEs. Scotland's leading university start-up programme."
+        },
         {
           "title": "Shortlisted (top ten) \u2014 Hydrogen Scotland Student Poster Competition",
           "meta": "2026",
@@ -215,7 +236,7 @@
     {
       "id": "contact",
       "kind": "links",
-      "number": "6",
+      "number": "7",
       "title": "Contact",
       "lead": "Open to research collaboration and industry projects.",
       "items": [
