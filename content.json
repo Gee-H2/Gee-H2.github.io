@@ -95,6 +95,11 @@
           "note": "Power-to-X catalysis for intermittent renewable electricity."
         },
         {
+          "title": "Hydrogen Long-Duration Storage in an Industrial Energy System: Cost, Carbon and Grid-Peak Trade-offs at a Scottish Business Park",
+          "meta": "Poster \u00b7 Hydrogen Scotland Conference, 2026 (shortlisted, top ten)",
+          "note": "Sector-coupled PyPSA model sizing rooftop PV against battery, thermal and hydrogen storage; surfaces a tariff-dependent grid-peak trade-off."
+        },
+        {
           "title": "Digital-twin modelling of distributed energy storage in commercial sites (working title)",
           "meta": "Manuscript in preparation, 2026",
           "note": "PyPSA-based comparison of PV, battery, hydrogen and thermal storage over a full year of dispatch."
@@ -180,6 +185,11 @@
       "number": "5",
       "title": "Recognition",
       "items": [
+        {
+          "title": "Shortlisted (top ten) \u2014 Hydrogen Scotland Student Poster Competition",
+          "meta": "2026",
+          "note": "Poster: \u201cHydrogen Long-Duration Storage in an Industrial Energy System: Cost, Carbon and Grid-Peak Trade-offs at a Scottish Business Park\u201d. Invited to exhibit at the Hydrogen Scotland Conference, Hilton Glasgow (6 Oct 2026)."
+        },
         {
           "title": "Winner \u2014 Hydrogen Scotland 2024 Student Poster Competition",
           "meta": "2024",

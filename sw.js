@@ -1,7 +1,7 @@
 /* Service worker: network-first for the page, content and scripts (so edits appear
    on a normal refresh), cache-first for static assets (images) for speed.
    Falls back to cache when offline. */
-const CACHE = "gu-site-v10";
+const CACHE = "gu-site-v11";
 const PRECACHE = ["./", "./index.html", "./content.json", "./sim.js", "./grid.js", "./images/profile.jpg"];
 
 self.addEventListener("install", e => {
