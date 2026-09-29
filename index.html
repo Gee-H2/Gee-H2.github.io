@@ -61,7 +61,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;text-wrap:balance}p{m
   .nav a{padding:14px var(--gutter);border-top:1px solid var(--rule);font-size:16px;color:var(--ink)}
   .nav a:first-child{border-top:none}
 }
-.hero{padding-block:clamp(40px,7vw,80px) clamp(36px,6vw,64px);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(28px,5vw,60px);align-items:start}
+.hero{padding-block:clamp(40px,7vw,80px) clamp(36px,6vw,64px);display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(28px,5vw,56px);align-items:start}
 @media(max-width:860px){.hero{grid-template-columns:1fr}}
 .kicker{display:flex;flex-wrap:wrap;gap:6px 14px;color:var(--muted);text-transform:uppercase}
 .kicker span+span::before{content:"·";margin-right:14px;color:var(--rule)}
@@ -98,7 +98,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;text-wrap:balance}p{m
 .chip.on{background:var(--accent-soft);border-color:var(--accent)}
 .reader .note{margin-top:12px;font-size:14.5px;color:var(--muted)}
 section.sec{border-top:1px solid var(--rule);padding-block:clamp(34px,5vw,58px);opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s;
-  display:grid;grid-template-columns:minmax(0,240px) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:start}
+  display:grid;grid-template-columns:150px minmax(0,1fr);gap:clamp(18px,3vw,40px);align-items:start}
 @media(max-width:760px){section.sec{grid-template-columns:1fr;gap:10px}}
 section.sec.in{opacity:1;transform:none}
 section.sec.spot{box-shadow:-16px 0 0 -13px var(--accent)}
@@ -147,11 +147,11 @@ html,body{overflow-x:hidden;max-width:100%}
 }
 @media(max-width:400px){.hero h1{font-size:32px}}
 
-.gridcard{margin:22px 0 4px;background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:14px 18px;display:grid;grid-template-columns:130px 1fr;gap:18px;align-items:center;max-width:560px}
+.gridcard{margin:24px 0 0;background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:14px 16px;display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:center}
 @media(max-width:560px){.gridcard{grid-template-columns:1fr;text-align:center}}
-.gridcard canvas{width:130px;height:82px;display:block;margin-inline:auto}
-.gridcard .t{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--accent);text-transform:uppercase}
-.gridcard .s{margin-top:6px;color:var(--muted);font-size:14px;line-height:1.5}
+.gridcard canvas{width:110px;height:72px;display:block;margin-inline:auto}
+.gridcard .t{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--accent);text-transform:uppercase}
+.gridcard .s{margin-top:5px;color:var(--muted);font-size:13px;line-height:1.45}
 .technote{margin-top:10px;color:var(--muted);font-size:12.5px;line-height:1.5;background:var(--paper-2);border:1px solid var(--rule);border-radius:8px;padding:8px 10px}
 </style>
 </head>
@@ -217,6 +217,7 @@ function render(d){
       <div class="abstract"><span class="lbl mono">Abstract</span><p>${md(h.abstract)}</p>
         <div class="keywords"><b>Keywords —</b> ${(h.keywords||[]).join(", ")}</div></div>
       ${h.reader&&h.reader.show?readerBlock(h.reader):""}
+      <div id="gridslot"></div>
     </div>
     <aside>
       ${h.photo?`<img class="photo" src="${esc(h.photo)}" alt="${esc(h.name)}" onerror="this.style.display='none'">`:""}
@@ -408,10 +409,8 @@ document.getElementById("theme").addEventListener("click",()=>{
 
 function mountGrid(){
   if(!window.GridWidget)return;
-  const hero=document.getElementById("top");if(!hero)return;
-  const card=document.createElement("div");card.className="gridcard";
-  card.innerHTML=`<canvas id="gridCanvas" aria-label="GB grid carbon intensity gauge"></canvas><div><div class="t">Live · Great Britain grid</div><div class="s" id="gridStatus">Loading current grid carbon intensity…</div></div>`;
-  hero.insertAdjacentElement("afterend",card);
+  const slot=document.getElementById("gridslot");if(!slot)return;
+  slot.innerHTML=`<div class="gridcard"><canvas id="gridCanvas" aria-label="GB grid carbon intensity gauge"></canvas><div><div class="t">Live · Great Britain grid</div><div class="s" id="gridStatus">Loading current grid carbon intensity…</div></div></div>`;
   window.GridWidget.mount(document.getElementById("gridCanvas"),document.getElementById("gridStatus"));
 }
 
