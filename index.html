@@ -38,7 +38,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;text-wrap:balance}p{m
 .wrap{max-width:1180px;margin-inline:auto;padding-inline:var(--gutter)}
 .progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);width:0;z-index:30}
 .top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
-.top .wrap{display:flex;align-items:center;gap:20px;min-height:60px}
+.top .wrap{display:flex;align-items:center;gap:20px;min-height:60px;position:relative}
 .mark{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--serif);font-size:20px}
 .mark i{width:14px;height:14px;border-radius:50%;background:radial-gradient(circle at 35% 35%,var(--ochre-2),var(--ochre))}
 .nav{margin-left:auto;display:flex;gap:20px;overflow-x:auto;scrollbar-width:none}.nav::-webkit-scrollbar{display:none}
@@ -46,6 +46,21 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;text-wrap:balance}p{m
 .nav a:hover,.nav a.on{color:var(--ink)}.nav a b{font-family:var(--mono);font-weight:400;font-size:11px;color:var(--accent);margin-right:4px}
 .btn{background:none;border:1px solid var(--rule);border-radius:20px;color:var(--muted);font-family:var(--mono);font-size:11px;padding:5px 10px;cursor:pointer}
 .btn:hover{color:var(--ink);border-color:var(--accent)}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:4px;width:38px;height:34px;background:none;border:1px solid var(--rule);border-radius:9px;cursor:pointer;padding:0}
+.hamburger span{display:block;width:16px;height:1.6px;background:var(--ink);margin-inline:auto;transition:transform .25s,opacity .2s}
+.hamburger[aria-expanded="true"] span:nth-child(1){transform:translateY(5.6px) rotate(45deg)}
+.hamburger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.hamburger[aria-expanded="true"] span:nth-child(3){transform:translateY(-5.6px) rotate(-45deg)}
+@media(max-width:640px){
+  .hamburger{display:flex}
+  .hintbar{display:none}
+  #theme{display:none}
+  .nav{position:absolute;top:100%;left:0;right:0;margin:0;flex-direction:column;gap:0;
+    background:var(--paper);border-bottom:1px solid var(--rule);overflow:hidden;max-height:0;transition:max-height .3s ease}
+  .nav.open{max-height:80vh;overflow:auto}
+  .nav a{padding:14px var(--gutter);border-top:1px solid var(--rule);font-size:16px;color:var(--ink)}
+  .nav a:first-child{border-top:none}
+}
 .hero{padding-block:clamp(40px,7vw,80px) clamp(36px,6vw,64px);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(28px,5vw,60px);align-items:start}
 @media(max-width:860px){.hero{grid-template-columns:1fr}}
 .kicker{display:flex;flex-wrap:wrap;gap:6px 14px;color:var(--muted);text-transform:uppercase}
@@ -147,6 +162,9 @@ html,body{overflow-x:hidden;max-width:100%}
   <nav class="nav" id="nav"></nav>
   <span class="hintbar"><kbd>⌘K</kbd></span>
   <button class="btn" id="theme">THEME</button>
+  <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="nav">
+    <span></span><span></span><span></span>
+  </button>
 </div></header>
 
 <main class="wrap" id="app" tabindex="-1">
@@ -369,6 +387,23 @@ document.getElementById("theme").addEventListener("click",()=>{
   document.dispatchEvent(new Event("themechange"));
 });
 (()=>{try{const t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}})();
+
+// hamburger (mobile nav)
+(function(){
+  const btn=document.getElementById("hamburger"),nav=document.getElementById("nav");
+  if(!btn||!nav)return;
+  const close=()=>{nav.classList.remove("open");btn.setAttribute("aria-expanded","false");};
+  btn.addEventListener("click",()=>{
+    const open=nav.classList.toggle("open");
+    btn.setAttribute("aria-expanded",open?"true":"false");
+  });
+  // close when a nav link is tapped (nav is populated after render, so delegate)
+  nav.addEventListener("click",e=>{if(e.target.closest("a"))close();});
+  // close on Escape or when resizing to desktop
+  document.addEventListener("keydown",e=>{if(e.key==="Escape")close();});
+  window.addEventListener("resize",()=>{if(window.innerWidth>640)close();});
+})();
+
 
 
 function mountGrid(){
