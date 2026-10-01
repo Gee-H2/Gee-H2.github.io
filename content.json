@@ -67,6 +67,23 @@
     "figure": {
       "show": true,
       "caption": "**Fig. 1** Solar generation (gold) rarely lines up with demand (green). Storage shifts the midday surplus into the evening peak. Move your cursor across the day to see the mismatch."
+    },
+    "cta": {
+      "text": "I'm open to research collaboration, DecarbTwin partnerships and PhD/industry conversations.",
+      "buttons": [
+        {
+          "label": "Get in touch",
+          "href": "mailto:givt.udoh@gmail.com"
+        },
+        {
+          "label": "DecarbTwin",
+          "href": "#venture"
+        },
+        {
+          "label": "Research",
+          "href": "#research"
+        }
+      ]
     }
   },
   "sections": [
@@ -108,27 +125,37 @@
         {
           "title": "Induction-heated catalyst systems for intermittent power to hydrocarbons and hydrogen",
           "meta": "J. Andresen, M. Ojeda, G. Udoh \u2014 Faraday Discussions, 2026",
-          "note": "Power-to-X catalysis for intermittent renewable electricity."
+          "note": "Power-to-X catalysis for intermittent renewable electricity.",
+          "tag": "Peer-reviewed",
+          "featured": true
         },
         {
           "title": "Hydrogen Long-Duration Storage in an Industrial Energy System: Cost, Carbon and Grid-Peak Trade-offs at a Scottish Business Park",
           "meta": "Poster \u00b7 Hydrogen Scotland Conference, 2026 (shortlisted, top ten)",
-          "note": "Sector-coupled PyPSA model sizing rooftop PV against battery, thermal and hydrogen storage; surfaces a tariff-dependent grid-peak trade-off."
+          "note": "Sector-coupled PyPSA model sizing rooftop PV against battery, thermal and hydrogen storage; surfaces a tariff-dependent grid-peak trade-off.",
+          "tag": "Award poster",
+          "featured": true
         },
         {
           "title": "Digital-twin modelling of distributed energy storage in commercial sites (working title)",
           "meta": "Manuscript in preparation, 2026",
-          "note": "PyPSA-based comparison of PV, battery, hydrogen and thermal storage over a full year of dispatch."
+          "note": "PyPSA-based comparison of PV, battery, hydrogen and thermal storage over a full year of dispatch.",
+          "tag": "In preparation",
+          "featured": false
         },
         {
           "title": "Energy storage in UK business parks: a systematic review (working title)",
           "meta": "Review in preparation, 2026",
-          "note": "Literature streams, market/regulatory access, and the objective-function trap."
+          "note": "Literature streams, market/regulatory access, and the objective-function trap.",
+          "tag": "In preparation",
+          "featured": false
         },
         {
           "title": "MSc dissertation \u2014 Advanced energy storage for large-scale solar farms (Edinburgh Airport case study)",
           "meta": "Heriot-Watt University, 2024",
-          "note": "Optimising storage for large-scale solar, with Edinburgh Airport as the case study."
+          "note": "Optimising storage for large-scale solar, with Edinburgh Airport as the case study.",
+          "tag": "Thesis",
+          "featured": false
         }
       ]
     },

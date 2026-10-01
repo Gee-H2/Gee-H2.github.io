@@ -111,6 +111,17 @@ section.sec.spot{box-shadow:-16px 0 0 -13px var(--accent)}
 .grid3 h3{font-size:16px;font-family:var(--sans);font-weight:600;margin-bottom:8px}.grid3 ul{margin:0;padding-left:18px;color:var(--muted);font-size:15px}.grid3 li{margin-bottom:4px}
 .pub{border-top:1px solid var(--rule);padding-block:16px}.pub:first-of-type{border-top:none}
 .pub .t{font-family:var(--serif);font-size:19px}.pub .m{font-family:var(--mono);font-size:12px;color:var(--accent);margin-top:4px}.pub .n{color:var(--muted);font-size:14.5px;margin-top:6px}
+.pub.feat{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:16px 18px;margin-block:6px}
+.pub.feat:first-of-type{border:1px solid var(--rule)}
+.tag{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);border-radius:20px;padding:2px 8px;margin-right:10px;vertical-align:middle}
+.tag-key{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+.cta{margin-top:22px;border-top:1px solid var(--rule);padding-top:18px}
+.cta-text{font-family:var(--serif);font-size:18px;color:var(--ink);max-width:54ch}
+.cta-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.cta-btn{text-decoration:none;font-size:14px;padding:9px 16px;border:1px solid var(--rule);border-radius:22px;color:var(--ink);transition:border-color .2s,background .2s}
+.cta-btn:hover{border-color:var(--accent);color:var(--accent)}
+.cta-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.cta-btn.primary:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 .tl{margin-top:20px}.tl .row{display:grid;grid-template-columns:150px 1fr;gap:18px;padding-block:14px;border-top:1px solid var(--rule)}@media(max-width:640px){.tl .row{grid-template-columns:1fr;gap:4px}}
 .tl .when{font-family:var(--mono);font-size:12.5px;color:var(--accent)}.tl .what{font-family:var(--serif);font-size:18px}.tl .note{color:var(--muted);font-size:14px;margin-top:4px}
 .iconrow{margin-top:22px;display:flex;flex-wrap:wrap;gap:14px}
@@ -217,6 +228,7 @@ function render(d){
       <div class="affil">${(h.affiliations||[]).map(esc).join("<br>")}</div>
       <div class="abstract"><span class="lbl mono">Abstract</span><p>${md(h.abstract)}</p>
         <div class="keywords"><b>Keywords —</b> ${(h.keywords||[]).join(", ")}</div></div>
+      ${h.cta?`<div class="cta"><p class="cta-text">${md(h.cta.text)}</p><div class="cta-btns">${(h.cta.buttons||[]).map((b,i)=>`<a class="cta-btn${i===0?' primary':''}" href="${esc(b.href)}">${esc(b.label)}</a>`).join("")}</div></div>`:""}
       ${h.reader&&h.reader.show?readerBlock(h.reader):""}
       <div id="gridslot"></div>
     </div>
@@ -278,7 +290,7 @@ function renderSection(s){
   if(s.lead)inner+=`<div class="lead">${md(s.lead)}</div>`;
   if(s.body)inner+=`<div class="body">${md(s.body)}</div>`;
   if(s.kind==="columns")inner+=`<div class="grid3">${(s.columns||[]).map(c=>`<div><h3>${esc(c.heading)}</h3><ul>${c.items.map(i=>`<li>${md(i)}</li>`).join("")}</ul></div>`).join("")}</div>`;
-  if(s.kind==="list")inner+=(s.items||[]).map(it=>`<div class="pub"><div class="t">${md(it.title)}</div>${it.meta?`<div class="m">${esc(it.meta)}</div>`:""}${it.note?`<div class="n">${md(it.note)}</div>`:""}</div>`).join("");
+  if(s.kind==="list")inner+=(s.items||[]).map(it=>`<div class="pub${it.featured?' feat':''}"><div class="t">${it.tag?`<span class="tag ${/Peer|Award/.test(it.tag)?'tag-key':''}">${esc(it.tag)}</span>`:""}${md(it.title)}</div>${it.meta?`<div class="m">${esc(it.meta)}</div>`:""}${it.note?`<div class="n">${md(it.note)}</div>`:""}</div>`).join("");
   if(s.kind==="timeline")inner+=`<div class="tl">${(s.items||[]).map(it=>`<div class="row"><div class="when">${esc(it.when)}</div><div><div class="what">${md(it.what)}</div>${it.note?`<div class="note">${md(it.note)}</div>`:""}</div></div>`).join("")}</div>`;
   if(s.kind==="links")inner+=`<div class="iconrow">${(s.items||[]).map(it=>{
       const key=(it.label||"").toLowerCase();
