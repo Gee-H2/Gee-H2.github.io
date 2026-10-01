@@ -99,7 +99,42 @@
         "energy systems modelling",
         "hydrogen",
         "power-to-X"
-      ]
+      ],
+      "figure": {
+        "caption": "**Fig. 2** Full-year results from my digital-twin model: solar fraction and annual CO\u2082 savings across five storage configurations (S0 PV-only \u2192 S4 full hybrid). Battery (S1) is operationally optimal; the full hybrid (S4) reaches the highest renewable use. Verified PyPSA results.",
+        "scenarios": [
+          {
+            "id": "S0",
+            "label": "PV only",
+            "solar": 31.8,
+            "co2": 178.0
+          },
+          {
+            "id": "S1",
+            "label": "PV+BESS",
+            "solar": 38.8,
+            "co2": 217.2
+          },
+          {
+            "id": "S2",
+            "label": "PV+PCM",
+            "solar": 35.0,
+            "co2": 195.7
+          },
+          {
+            "id": "S3",
+            "label": "PV+H\u2082",
+            "solar": 39.4,
+            "co2": 220.5
+          },
+          {
+            "id": "S4",
+            "label": "Hybrid",
+            "solar": 42.7,
+            "co2": 238.8
+          }
+        ]
+      }
     },
     {
       "id": "venture",

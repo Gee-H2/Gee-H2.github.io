@@ -9,13 +9,17 @@
 <meta property="og:title" content="Gift Udoh — energy systems researcher">
 <meta property="og:description" content="Digital twins for decarbonising industry with hydrogen and low-carbon energy vectors. Try the live storage-dispatch model.">
 <meta property="og:url" content="https://gee-h2.github.io/">
-<meta property="og:image" content="https://gee-h2.github.io/images/profile.jpg">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://gee-h2.github.io/images/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gee-h2.github.io/images/og-card.png">
 <meta name="theme-color" content="#EEEDE4" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#111613" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="https://gee-h2.github.io/">
 <title>Gift Udoh</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%231D6A5A'/%3E%3Ccircle cx='12' cy='12' r='3' fill='%23F6F5EE' opacity='.5'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='13' cy='16' r='9' fill='%231D6A5A'/%3E%3Ccircle cx='20' cy='16' r='9' fill='none' stroke='%23D9A64C' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -108,6 +112,15 @@ section.sec.spot{box-shadow:-16px 0 0 -13px var(--accent)}
 .sec .content{min-width:0}
 .sec .lead{font-family:var(--serif);font-size:20px}.sec .body{margin-top:14px;max-width:68ch}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:20px}@media(max-width:760px){.grid3{grid-template-columns:1fr}}
+.rfig{margin-top:22px;background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:18px}
+.rf-chart{display:flex;align-items:flex-end;gap:14px;height:150px}
+.rf-col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
+.rf-bar{width:100%;max-width:54px;background:linear-gradient(var(--accent),var(--accent-soft));border-radius:6px 6px 0 0;position:relative;min-height:4px;transition:filter .2s}
+.rf-bar:hover{filter:brightness(1.15)}
+.rf-val{position:absolute;top:-20px;left:0;right:0;text-align:center;font-family:var(--mono);font-size:11px;color:var(--ink)}
+.rf-lab{font-family:var(--mono);font-size:12px;color:var(--accent);margin-top:6px}
+.rf-sub{font-size:10.5px;color:var(--muted);text-align:center}
+.rf-axis{color:var(--muted);margin-top:10px;font-size:11px}
 .grid3 h3{font-size:16px;font-family:var(--sans);font-weight:600;margin-bottom:8px}.grid3 ul{margin:0;padding-left:18px;color:var(--muted);font-size:15px}.grid3 li{margin-bottom:4px}
 .pub{border-top:1px solid var(--rule);padding-block:16px}.pub:first-of-type{border-top:none}
 .pub .t{font-family:var(--serif);font-size:19px}.pub .m{font-family:var(--mono);font-size:12px;color:var(--accent);margin-top:4px}.pub .n{color:var(--muted);font-size:14.5px;margin-top:6px}
@@ -285,10 +298,19 @@ function renderSections(list){
   app.insertAdjacentHTML("beforeend",list.map(renderSection).join(""));
   wireReveal();wireSpy();
 }
+function researchFigure(f){
+  const sc=f.scenarios||[];const maxS=Math.max(...sc.map(x=>x.solar));
+  const bars=sc.map(x=>{
+    const h=Math.round(x.solar/maxS*120);
+    return `<div class="rf-col"><div class="rf-bar" style="height:${h}px" title="${x.id}: ${x.solar}% solar, ${x.co2} tCO₂/yr"><span class="rf-val">${x.solar}%</span></div><div class="rf-lab">${esc(x.id)}</div><div class="rf-sub">${esc(x.label)}</div></div>`;
+  }).join("");
+  return `<div class="rfig"><div class="rf-chart">${bars}</div><div class="rf-axis mono">solar fraction (%) · hover for CO₂</div><div class="figcap">${md(f.caption)}</div></div>`;
+}
 function renderSection(s){
   let inner="";
   if(s.lead)inner+=`<div class="lead">${md(s.lead)}</div>`;
   if(s.body)inner+=`<div class="body">${md(s.body)}</div>`;
+  if(s.figure&&s.figure.scenarios)inner+=researchFigure(s.figure);
   if(s.kind==="columns")inner+=`<div class="grid3">${(s.columns||[]).map(c=>`<div><h3>${esc(c.heading)}</h3><ul>${c.items.map(i=>`<li>${md(i)}</li>`).join("")}</ul></div>`).join("")}</div>`;
   if(s.kind==="list")inner+=(s.items||[]).map(it=>`<div class="pub${it.featured?' feat':''}"><div class="t">${it.tag?`<span class="tag ${/Peer|Award/.test(it.tag)?'tag-key':''}">${esc(it.tag)}</span>`:""}${md(it.title)}</div>${it.meta?`<div class="m">${esc(it.meta)}</div>`:""}${it.note?`<div class="n">${md(it.note)}</div>`:""}</div>`).join("");
   if(s.kind==="timeline")inner+=`<div class="tl">${(s.items||[]).map(it=>`<div class="row"><div class="when">${esc(it.when)}</div><div><div class="what">${md(it.what)}</div>${it.note?`<div class="note">${md(it.note)}</div>`:""}</div></div>`).join("")}</div>`;
